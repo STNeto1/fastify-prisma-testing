@@ -1,6 +1,14 @@
 version: '3.7'
 
 services:
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: integration-tests-prisma
+    environment:
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_USER: prisma
+      POSTGRES_DB: tests
   app:
     build:
       context: .
@@ -8,3 +16,5 @@ services:
     volumes:
       - .:/app
     command: npm run test
+    depends_on:
+      - db
