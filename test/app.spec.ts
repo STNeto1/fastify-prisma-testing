@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 
-import server from '../src/app'
 import { rootResponseSchema } from '../src/schemas/root'
+import server from '../src/server'
 
 test('with HTTP injection', async () => {
   const response = await server.inject({
